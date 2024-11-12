@@ -1,0 +1,321 @@
+/* Navbar gradient background */
+.navbar-gradient {
+    background: linear-gradient(to right, #ffcccb, #ff1493);
+  }
+  
+  .navbar-brand {
+    font-family: 'Poppins'; /* Change the font here */
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+  .logo {
+    width: 40px; 
+    height: auto; 
+    margin-left: 15px; 
+  }
+
+
+
+
+
+
+ 
+  /* Inventory Styles */
+  
+  /* Fixed Sidebar */
+  .sidebar {
+    width: 200px;
+    height: 100vh; 
+    background-color: #ffff; 
+    position: fixed; 
+    top: 56px; 
+    left: 0; 
+    padding: 20px;
+    overflow-y: auto; 
+  }
+  
+  .sidebar .nav-link {
+    color: #000;
+  }
+  
+  .sidebar .nav-link.active {
+    font-weight: bold; 
+    color: #100f0f; 
+  }
+
+  .sidebar-footer {
+    position: absolute;
+    bottom: 100px;
+    width: 100%;
+}
+
+.sidebar-footer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  padding-bottom: 100%; 
+  font-style: 'Poppins';
+}
+
+.flower {
+  margin: 0;
+}
+
+
+
+.custom-font {
+    font-family: 'Courier New', Courier, monospace; /* Change this to any font you prefer */
+    font-size: 16px;
+    color: #333;
+}
+
+
+  
+  /* Main Content */
+  .main-content {
+    margin-left: 230px;
+    padding: 30px;
+    height: calc(100vh - 56px); 
+  }
+  
+  /* Tab Styles */
+  .tab {
+    padding: 10px 20px;
+    background: linear-gradient(to right, #ffcccb, #ff1493);
+    border: none;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  .tab.active {
+    background-color: #c33b72;
+    color: #fff;
+  }
+  
+  /* Inventory Table Styles */
+  .inventory-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .inventory-table th,
+  .inventory-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  .inventory-table th {
+    background-color: #f8cedc;
+    color: #333;
+  }
+  
+  /* Dashboard Sales and Cards Layout */
+  .dashboard-sales {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: top; 
+    gap: 20px; 
+    width: 100%; 
+    position: relative; 
+    margin: 0; 
+  }
+  
+  .dashboard-cards {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: top; 
+    gap: 20px; 
+    width: 100%; 
+    position: relative;
+    margin: 20px 0; 
+  }
+  
+  /* Card Styles */
+  .card {
+    width: 18rem; 
+  }
+  
+  .card-body {
+    padding: 20px; 
+  }
+  
+  .card-header {
+    background: linear-gradient(90deg, #ffcccb, #ff1493);
+    color: white; 
+    font-weight: bold;
+    text-align: center; 
+    padding: 10px;
+  }
+  
+  .list-group-item {
+    background-color: #f8f9fa; 
+    border: none; 
+    border-bottom: 2px solid #dee2e6; 
+    padding: 10px; 
+  }
+  
+  /* Chart Styles */
+  .charts {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: auto; 
+    width: 100%; 
+    position: relative; 
+  }
+  
+  /* Border Style */
+  .border {
+    border: 1px solid #007bff; 
+    border-radius: 5px; /* Optional: Rounded corners */
+  }
+  
+  /* Additional Body Styles */
+  body {
+    padding-top: 56px; 
+  }
+  
+  .main-content{
+    margin-left: 220px; 
+    padding: 20px;
+  }
+
+  
+  /*Table Sales */
+
+  td {
+    text-align: center;
+}
+
+
+  /* Sales Date Picker */
+
+.datepicker-input-group {
+    max-width: 300px;
+    margin-bottom: 15px; /* Add some space between picker and the table */
+}
+.datepicker-input-group .input-group-text {
+    background-color: #f8f9fa; 
+    border: 1px solid #ced4da;
+}
+.datepicker-input-group input {
+    border-radius: 0.375rem;
+}
+
+
+  
+ /*Account*/
+ 
+ .content {
+    display: flex;     
+    width: 100%;              
+    padding: 30px;
+}
+
+.form-container {
+  background-color:white;
+  padding: 20px;
+  border-radius: 5px;
+  border-color: #000;
+
+  max-width: 400px;
+  margin: 50px auto;
+  border: 1px solid #ccc;
+  
+}
+
+.form-header {
+  display: flex;
+  align-items: center;
+}
+
+.form-header img {
+  margin-right: 10px;
+}
+
+.form-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 35px;
+}
+
+.button {
+  padding: 8px 20px;
+  border-radius: 10px;
+}
+
+.btn-primary{
+  background-color: #ffc0cb;
+  border: none;
+  color: #000;
+}
+
+.btn-secondary{
+  background-color: #8ec4db;
+  border: none;
+  color: #000;
+}
+
+
+.photo-container {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  max-width: 400px;
+  margin: 80px auto;
+  background-color:white;
+}
+
+.photo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.photo-header img {
+  width: 20px;
+  height: 20px;
+}
+
+.photo-placeholder {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  margin-bottom: 20px;
+  margin-left: 0;
+}
+
+.custom-btn {
+  background-color: #ffc0cb;
+  border: none;
+  color: #000;
+}
+
+
+  
+  
+  
+  
