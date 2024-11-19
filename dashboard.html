@@ -17,15 +17,22 @@
                 T G F 
             </a>
             <div class="ms-auto d-flex align-items-center">
-                <a href="C:\Users\user\Documents\Project\login.html">
-                    <img src="assets/usernamee.png" alt="User Icon" width="40" height="30" class="rounded-circle mb-1">
-                    <span class="fw-bold">Admin</span>
-                </a>
+                <!-- User Icon with Dropdown Menu -->
+                <div class="dropdown">
+                    <a href="#" class="d-flex align-items-center" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="assets/usernamee.png" alt="User Icon" width="60" height="30" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="account.html">Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="dashnologin.html">Log Out</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>
     
-
+    
     <div class="d-flex">
         <!-- Sidebar -->
         <div class="sidebar">
@@ -45,16 +52,8 @@
             </div>
         </div>
 
-        <main class="main-content" >
-            <h4 class=" m-4 mt-4 mb-4">Dashboard</h4> 
-            <div class="dashboard-sales mb-4 justify-content-center">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-header">Sales</div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-center">10,000</li>
-                    </ul>
-                </div>
-            </div>
+        <main class="main-content">
+            <h4 class="m-4 mt-4 mb-4">Dashboard</h4> 
 
             <div class="charts mb-4">
                 <div class="monitor1 border border-primary">
@@ -62,11 +61,20 @@
                 </div>
             </div>
 
-            <!-- Row for two cards side by side -->
+            <!-- Row for three cards side by side -->
             <div class="row">
+                                <!-- Sales Card -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-header">Sales</div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item text-center">10,000</li>
+                            </ul>
+                        </div>
+                    </div>
                 <!-- Low Stock Flowers Table -->
-                <div class="col-md-6 mb-10 m-5">
-                    <div class="card me-md-5">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
                         <div class="card-header">Low Stock Flowers</div>
                         <table class="table">
                             <thead>
@@ -94,7 +102,7 @@
                 </div>
 
                 <!-- Highest Selling Flowers Table -->
-                <div class="col-md-3 m-5">
+                <div class="col-md-4 mb-4">
                     <div class="card">
                         <div class="card-header">Highest Selling Flowers</div>
                         <table class="table">

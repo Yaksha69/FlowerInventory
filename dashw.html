@@ -17,26 +17,31 @@
                 T G F 
             </a>
             <div class="ms-auto d-flex align-items-center">
-                <a href="C:\Users\user\Documents\Project\login.html">
-                   
-                    <button type="button" class="btn btn-outline-primary me-4">Login</button>
+                <!-- User Icon with Click to Redirect -->
+                <a href="login.html" class="d-flex align-items-center">
+                    <img src="assets/usernamee.png" alt="User Icon" width="60" height="30" class="rounded-circle">
                 </a>
             </div>
+            
         </div>
     </nav>
     
-
-
-        
-            <h4 class=" mb-5 mt-5 mb-5 justify-content-center"></h4> 
-            <div class="dashboard-sales mb-4 justify-content-center">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-header">Sales</div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-center">10,000</li>
-                    </ul>
-                </div>
+    
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <ul class="nav flex-column mt-2">
+                <li class="nav-item">
+                    <a class="nav-link active mt-2" href="#"><img src="assets/home-removebg-preview.png" alt="Dashboard Icon" width="20"> Dashboard</a>
+                </li>
+            </ul>
+            <div class="sidebar-footer text-center">
+                <p class="flower">TGF <br>FLOWER SHOP</p>
             </div>
+        </div>
+
+        <main class="main-content">
+            <h4 class="m-4 mt-4 mb-4">Dashboard</h4> 
 
             <div class="charts mb-4">
                 <div class="monitor1 border border-primary">
@@ -44,11 +49,20 @@
                 </div>
             </div>
 
-            <!-- Row for two cards side by side -->
-            <div class="row justify-content-center">
+            <!-- Row for three cards side by side -->
+            <div class="row">
+                                <!-- Sales Card -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-header">Sales</div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item text-center">10,000</li>
+                            </ul>
+                        </div>
+                    </div>
                 <!-- Low Stock Flowers Table -->
-                <div class="col-md-6 mb-10 m-5 ">
-                    <div class="card me-md-5">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
                         <div class="card-header">Low Stock Flowers</div>
                         <table class="table">
                             <thead>
@@ -76,7 +90,7 @@
                 </div>
 
                 <!-- Highest Selling Flowers Table -->
-                <div class="col-md-3 m-5">
+                <div class="col-md-4 mb-4">
                     <div class="card">
                         <div class="card-header">Highest Selling Flowers</div>
                         <table class="table">
@@ -104,7 +118,7 @@
                     </div>
                 </div>
             </div>
-        
+        </main>
     </div>
 
     <script src="chart1.js"></script> <!-- Your JavaScript file -->
