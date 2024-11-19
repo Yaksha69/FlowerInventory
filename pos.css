@@ -1,0 +1,166 @@
+/* Navbar gradient background */
+.navbar-gradient {
+    background: linear-gradient(to right, #ffcccb, #ff1493);
+  }
+  
+  .navbar-brand {
+    font-family: 'Poppins'; /* Change the font here */
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+  .logo {
+    width: 40px; 
+    height: auto; 
+    margin-left: 15px; 
+  }
+
+
+
+
+  
+  /* Fixed Sidebar */
+  .sidebar {
+    width: 200px;
+    height: 100vh; 
+    background-color: #ffff; 
+    position: fixed; 
+    top: 56px; 
+    left: 0; 
+    padding: 20px;
+    overflow-y: auto; 
+  }
+  
+  .sidebar .nav-link {
+    color: #000;
+  }
+  
+  .sidebar .nav-link.active {
+    font-weight: bold; 
+    color: #100f0f; 
+  }
+
+  .sidebar-footer {
+    position: absolute;
+    bottom: 100px;
+    width: 100%;
+}
+
+.sidebar-footer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  padding-bottom: 100%; 
+  font-style: 'Poppins';
+}
+
+.flower {
+  margin: 0;
+}
+
+
+
+.custom-font {
+    font-family: 'Courier New', Courier, monospace; /* Change this to any font you prefer */
+    font-size: 16px;
+    color: #333;
+}
+
+
+/*pos*/
+.head{
+    display: inline;
+   
+  }
+  
+  header{
+    padding: 2px;
+    background-color:khaki;
+  
+  }
+  .side{
+    list-style-type: none;
+    text-decoration: none;
+  }
+  .bar{
+    margin-top: 50px;
+    margin-left: 20px;
+  }
+  .pos{
+    text-decoration: none;
+  }
+  
+  .checkoutSidebar {
+    position: fixed;
+    top: 60px; /* Adjust for the header */
+    right: 0;
+    background-color: #f8f9fa;
+    height: calc(100vh - 60px); /* Full height minus header height */
+    width: 20%;
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Flex-start to make sure the content stays top aligned */
+  }
+  
+  
+  .checkoutContent {
+    flex-grow: 1; /* Allows the content to grow and take up space */
+  }
+  
+  .checkoutbtn {
+    align-self: center; /* Center-aligns the button horizontally */
+    margin-bottom: 20px; /* Adds some space at the bottom */
+    width: 90%; /* Adjusts the button width */
+  }
+  .checkoutItem {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .itemDetails {
+    flex-grow: 1;
+  }
+  
+  .itemControls {
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .itemQuantity {
+    width: 50px;
+    text-align: center;
+    margin: 0 5px;
+  }
+  
+  .deleteBtn {
+    align-self: flex-start;
+  }
+  
+  body {
+    background-color: #fafbfd;
+    margin-right: 320px; /* Add margin to the body to avoid overlap with the sidebar */
+  }
+  
+  .contain {
+    margin-top: 8%; /* Space from the top */
+    margin-left: 22%; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
+    max-width: calc(100% - 320px); /* Prevent it from overlapping with the sidebar */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Space out the columns within the row */
+    gap: 20px; /* Add space between cards */
+  }
+  
+  .imgpos {
+    width: 100%; /* Make the image take the full width of the card */
+    height: 25vh; /* Maintain the aspect ratio */
+  }
+    

@@ -1,16 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Sample data array to store inventory items
     let inventory = [
         { ID: '1', product: 'Rose', quantity: 25, price: '00.00' }
     ];
 
-    // Variable to store the index of the product to delete
     let deleteIndex = null;
 
     // Function to render inventory table
     function renderInventory() {
         const tableBody = document.querySelector('tbody');
-        tableBody.innerHTML = ''; // Clear existing table rows
+        tableBody.innerHTML = '';
 
         inventory.forEach((item, index) => {
             const row = document.createElement('tr');
@@ -20,64 +18,98 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td>${item.quantity}</td>
                 <td>${item.price}</td>
                 <td>
-                    <button class="btn btn-sm btn-info me-3" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editProduct(${index})">Edit</button>
-                    <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="setDeleteIndex(${index})">Delete</button>
+                    <button class="btn btn-sm btn-info me-3 action-btn edit-btn" data-index="${index}" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
+                    <button class="btn btn-sm btn-danger action-btn delete-btn" data-index="${index}" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                 </td>
             `;
             tableBody.appendChild(row);
         });
+
+        attachEventListeners();
+    }
+
+    // Attach event listeners for edit and delete buttons
+    function attachEventListeners() {
+        document.querySelectorAll('.edit-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const index = e.target.getAttribute('data-index');
+                editProduct(index);
+            });
+        });
+
+        document.querySelectorAll('.delete-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const index = e.target.getAttribute('data-index');
+                setDeleteIndex(index);
+            });
+        });
     }
 
     // Function to set the index of the product to delete
-    window.setDeleteIndex = function(index) {
-        deleteIndex = index; // Store the index of the product to delete
-    };
-
-    // Function to delete the product
+    function setDeleteIndex(index) {
+        deleteIndex = index;
+    }
+    
     document.querySelector('#deleteModal .btn-danger').addEventListener('click', () => {
         if (deleteIndex !== null) {
-            inventory.splice(deleteIndex, 1); // Remove the item from the array
-            deleteIndex = null; // Reset the delete index
-            renderInventory(); // Re-render the inventory table
-            // Hide the modal
+            inventory.splice(deleteIndex, 1);
+            deleteIndex = null;
+            renderInventory();
             bootstrap.Modal.getInstance(document.getElementById('deleteModal')).hide();
         }
     });
+    
 
     // Function to add a new product
-    document.querySelector('.btn-success').addEventListener('click', () => {
-        const productName = document.getElementById('addProductName').value;
-        const productQuantity = document.getElementById('addProductQuantity').value;
-        const productPrice = document.getElementById('addProductPrice').value;
+    document.querySelector('#addModal .btn-success').addEventListener('click', () => {
+    const productName = document.getElementById('addProductName').value.trim();
+    const productQuantity = parseInt(document.getElementById('addProductQuantity').value.trim());
+    const productPrice = parseFloat(document.getElementById('addProductPrice').value.trim()).toFixed(2);
 
-        if (productName && productQuantity && productPrice) {
-            const newID = inventory.length ? (parseInt(inventory[inventory.length - 1].ID) + 1).toString() : '1'; // Generate new ID
-            inventory.push({ ID: newID, product: productName, quantity: parseInt(productQuantity), price: productPrice });
-            renderInventory();
-            // Clear input fields and close modal
-            document.getElementById('addProductName').value = '';
-            document.getElementById('addProductQuantity').value = '';
-            document.getElementById('addProductPrice').value = '';
-            bootstrap.Modal.getInstance(document.getElementById('addModal')).hide();
-        }
-    });
+    if (productName && productQuantity && !isNaN(productPrice)) {
+        const newID = inventory.length ? (parseInt(inventory[inventory.length - 1].ID) + 1).toString() : '1';
+        inventory.push({ ID: newID, product: productName, quantity: productQuantity, price: productPrice });
+
+        // Clear fields and close modal
+        document.getElementById('addProductName').value = '';
+        document.getElementById('addProductQuantity').value = '';
+        document.getElementById('addProductPrice').value = '';
+        renderInventory();
+        bootstrap.Modal.getInstance(document.getElementById('addModal')).hide();
+    } else {
+        alert('Please fill in all fields correctly!');
+    }
+});
+
 
     // Function to edit an existing product
-    window.editProduct = function(index) {
+    function editProduct(index) {
         const item = inventory[index];
         document.getElementById('editProductName').value = item.product;
         document.getElementById('editProductQuantity').value = item.quantity;
         document.getElementById('editProductPrice').value = item.price;
-
-        // Save changes on modal button click
+    
         document.querySelector('#editModal .btn-primary').onclick = () => {
-            item.product = document.getElementById('editProductName').value;
-            item.quantity = parseInt(document.getElementById('editProductQuantity').value);
-            item.price = document.getElementById('editProductPrice').value;
-            renderInventory();
-            bootstrap.Modal.getInstance(document.getElementById('editModal')).hide();
+            const updatedName = document.getElementById('editProductName').value.trim();
+            const updatedQuantity = parseInt(document.getElementById('editProductQuantity').value.trim());
+            const updatedPrice = parseFloat(document.getElementById('editProductPrice').value.trim()).toFixed(2);
+    
+            if (updatedName && updatedQuantity && !isNaN(updatedPrice)) {
+                inventory[index] = {
+                    ...item,
+                    product: updatedName,
+                    quantity: updatedQuantity,
+                    price: updatedPrice,
+                };
+    
+                renderInventory();
+                bootstrap.Modal.getInstance(document.getElementById('editModal')).hide();
+            } else {
+                alert('Please provide valid input values.');
+            }
         };
-    };
+    }
+    
 
     // Initial render of the inventory table
     renderInventory();
