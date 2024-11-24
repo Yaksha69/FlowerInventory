@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inventory</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Additional custom styles for smaller buttons */
+        .action-btn {
+            padding: 0.3rem 0.6rem;
+            font-size: 0.875rem; /* Smaller font size */
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <!-- Gradient Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-gradient fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="assets/logooo3.png" alt="Logo" width="50" height="40" class="me-2 logo">
+                T G F 
+            </a>
+            <div class="ms-auto d-flex align-items-center">
+                <!-- User Icon with Dropdown Menu -->
+                <div class="dropdown">
+                    <a href="#" class="d-flex align-items-center" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="assets/usernamee.png" alt="User Icon" width="60" height="30" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="account.html">Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="login.html">Log Out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="d-flex mt-5">
+        <div class="sidebar">
+            <ul class="nav flex-column mt-2">
+                <li class="nav-item">
+                    <a class="nav-link mt-2" href="dashboard.html"><img src="../assets/inventory.svg" alt="Dashboard Icon" width="20"> Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link  mt-2" href="pos.html"><img src="../assets/poss.svg" alt="Dashboard Icon" width="20"> POS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active mt-2" href="#"><img src="../assets/inventory.svg" alt="Inventory Icon" width="20"> Inventory</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mt-2" href="sales.html"><img src="../assets/sales.svg" alt="Sales Icon" width="20"> Sales</a>
+                </li>
+            </ul>
+            <div class="sidebar-footer text-center mt-5">
+                <p class="flower">TGF <br>FLOWER SHOP</p>
+            </div>
+        </div>
+
+        <main class="flex-fill">
+            <div class="main-content">
+                <h5 class="m-4">Inventory</h5>
+                <p class="m-4 fw-bold">All</p>
+
+                <!-- Inventory Table -->
+                <section class="inventory-table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Rose</td>
+                                <td>25</td>
+                                <td>00.00</td>
+                                <td>
+                                    <button class="btn btn-sm btn-info me-3 action-btn" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
+                                    <button class="btn btn-sm btn-danger action-btn" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Sun Flower</td>
+                                <td>66</td>
+                                <td>00.00</td>
+                                <td>
+                                    <button class="btn btn-sm btn-info me-3 action-btn" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
+                                    <button class="btn btn-sm btn-danger action-btn" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Tulips</td>
+                                <td>23</td>
+                                <td>00.00</td>
+                                <td>
+                                    <button class="btn btn-sm btn-info me-3 action-btn" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
+                                    <button class="btn btn-sm btn-danger action-btn" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Gerbera</td>
+                                <td>120</td>
+                                <td>00.00</td>
+                                <td>
+                                    <button class="btn btn-sm btn-info me-3 action-btn" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
+                                    <button class="btn btn-sm btn-danger action-btn" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Carnation</td>
+                                <td>15</td>
+                                <td>00.00</td>
+                                <td>
+                                    <button class="btn btn-sm btn-info me-3 action-btn" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
+                                    <button class="btn btn-sm btn-danger action-btn" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="d-grid gap-3 d-md-flex justify-content-md-end">
+                        <button class="btn btn-secondary me-md-5" type="button" data-bs-toggle="modal" data-bs-target="#addModal">Add Product</button>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirm Delete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this product?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EDIT MODAL -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="editProductName" class="form-label">Product Name</label>
+                        <input type="text" class="form-control" id="editProductName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editProductQuantity" class="form-label">Quantity</label>
+                        <input type="number" class="form-control" id="editProductQuantity">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editProductPrice" class="form-label">Price</label>
+                        <input type="text" class="form-control" id="editProductPrice">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADD PRODUCT MODAL -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addProductForm">
+                    <div class="mb-3">
+                        <label for="addProductName" class="form-label">Product Name</label>
+                        <input type="text" class="form-control" id="addProductName" placeholder="Enter product name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="addProductQuantity" class="form-label">Quantity</label>
+                        <input type="number" class="form-control" id="addProductQuantity" placeholder="Enter quantity" min="1" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="addProductPrice" class="form-label">Price</label>
+                        <input type="number" class="form-control" id="addProductPrice" placeholder="Enter price" min="0" step="0.01" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="addProduct()">Add Product</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Modal sections remain unchanged -->
+
+    <script src="inventory.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+</html>
+
