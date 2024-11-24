@@ -2,11 +2,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const checkoutContent = document.querySelector(".checkoutContent");
     const totalPriceElement = document.getElementById("totalPrice");
 
-    // Example cart data
-    let cart = [
-        { name: "Rose", price: 100.0, quantity: 1 },
-    ];
+    // Initialize an empty cart
+    let cart = [];
 
+    // Function to render the cart
     const renderCart = () => {
         checkoutContent.innerHTML = ""; // Clear previous content
         let total = 0;
@@ -17,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="checkoutItem d-flex justify-content-between align-items-center mb-3">
                     <div class="itemDetails">
                         <p class="m-0 fw-bold">${item.name}</p>
-                        <small>Price: $${item.price.toFixed(2)}</small>
+                        <small>Price: Php ${item.price.toFixed(2)}</small>
                     </div>
                     <div class="itemControls d-flex align-items-center">
                         <button class="btn btn-sm btn-outline-secondary quantityBtn" data-action="decrease" data-index="${index}">-</button>
@@ -30,9 +29,10 @@ document.addEventListener("DOMContentLoaded", function () {
             checkoutContent.insertAdjacentHTML("beforeend", itemElement);
         });
 
-        totalPriceElement.textContent = `$${total.toFixed(2)}`;
+        totalPriceElement.textContent = `Php ${total.toFixed(2)}`;
     };
 
+    // Handle checkout interactions
     checkoutContent.addEventListener("click", (e) => {
         const index = e.target.dataset.index;
 
@@ -49,5 +49,25 @@ document.addEventListener("DOMContentLoaded", function () {
         renderCart();
     });
 
+    // Listen for "Add to Cart" button clicks
+    document.querySelectorAll(".btn-primary").forEach((button) => {
+        button.addEventListener("click", (e) => {
+            const card = e.target.closest(".card");
+            const name = card.querySelector(".card-title").textContent;
+            const price = parseFloat(card.querySelector(".card-text").textContent.replace("Php ", ""));
+
+            // Check if the item is already in the cart
+            const existingItem = cart.find((item) => item.name === name);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+
+            renderCart();
+        });
+    });
+
+    // Initial render
     renderCart();
 });

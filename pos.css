@@ -4,7 +4,7 @@
   }
   
   .navbar-brand {
-    font-family: 'Poppins'; /* Change the font here */
+    font-family: 'Poppins'; 
     font-size: 1.5rem;
     font-weight: bold;
 }
@@ -64,7 +64,7 @@
 
 
 .custom-font {
-    font-family: 'Courier New', Courier, monospace; /* Change this to any font you prefer */
+    font-family: 'Courier New', Courier, monospace; 
     font-size: 16px;
     color: #333;
 }
@@ -95,28 +95,28 @@
   
   .checkoutSidebar {
     position: fixed;
-    top: 60px; /* Adjust for the header */
+    top: 60px;
     right: 0;
     background-color: #f8f9fa;
-    height: calc(100vh - 60px); /* Full height minus header height */
+    height: calc(100vh - 60px);
     width: 20%;
     padding: 20px;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Flex-start to make sure the content stays top aligned */
+    justify-content: flex-start; 
   }
   
   
   .checkoutContent {
-    flex-grow: 1; /* Allows the content to grow and take up space */
+    flex-grow: 1;
   }
   
   .checkoutbtn {
-    align-self: center; /* Center-aligns the button horizontally */
-    margin-bottom: 20px; /* Adds some space at the bottom */
-    width: 90%; /* Adjusts the button width */
+    align-self: center; 
+    margin-bottom: 20px; 
+    width: 90%; 
   }
   .checkoutItem {
     border-bottom: 1px solid #ddd;
@@ -145,22 +145,40 @@
   
   body {
     background-color: #fafbfd;
-    margin-right: 320px; /* Add margin to the body to avoid overlap with the sidebar */
+    margin-right: 320px; 
   }
   
   .contain {
-    margin-top: 8%; /* Space from the top */
-    margin-left: 22%; /* Center horizontally */
-    margin-right: auto; /* Center horizontally */
-    max-width: calc(100% - 320px); /* Prevent it from overlapping with the sidebar */
+    margin-top: 8%; 
+    margin-left: 22%; 
+    margin-right: auto; 
+    max-width: calc(100% - 320px); 
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around; /* Space out the columns within the row */
-    gap: 20px; /* Add space between cards */
+    justify-content: space-around;
+    gap: 20px;
   }
   
   .imgpos {
-    width: 100%; /* Make the image take the full width of the card */
-    height: 25vh; /* Maintain the aspect ratio */
+    width: 100%; 
+    height: 25vh; 
   }
-    
+  .btn {
+    background: linear-gradient(to right, #ffb6c1, #ff1493);
+    color: white;
+    border: none; 
+    padding: 5px 5px; 
+    border-radius: 5px; 
+    text-transform: uppercase; 
+    font-weight: bold; 
+    transition: all 0.3s ease; 
+}
+
+.btn:hover {
+    background: linear-gradient(to right, #ff1493, #ff69b4); 
+    transform: scale(1.05); 
+}
+
+.card-text{
+  font-weight: bold;
+}
