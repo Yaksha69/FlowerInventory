@@ -1,116 +1,146 @@
-document.addEventListener('DOMContentLoaded', () => {
-    let inventory = [
-        { ID: '1', product: 'Rose', quantity: 25, price: '00.00' }
-    ];
+document.addEventListener("DOMContentLoaded", () => {
+    const apiUrl = "http://localhost:5000/api/v1/data";
 
-    let deleteIndex = null;
+    // Fetch and populate inventory table
+    function fetchInventory() {
+        fetch('${apiUrl}/all')
+            .then((response) => response.json())
+            .then((data) => {
+                const tbody = document.querySelector("table tbody");
+                tbody.innerHTML = ""; // Clear existing rows
+                data.forEach((item) => {
+                    const row = `
+                        <tr>
+                            <td>${item.Product}</td>
+                            <td>${item.Quantity}</td>
+                            <td>${item.Price}</td>
+                            <td>
+                                <button class="btn btn-sm btn-info me-3 action-btn" 
+                                    data-id="${item.Product}" 
+                                    data-quantity="${item.Quantity}" 
+                                    data-price="${item.Price}" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#editModal">
+                                    Edit
+                                </button>
+                                <button class="btn btn-sm btn-danger action-btn" 
+                                    data-id="${item.Product}">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    `;
+                    tbody.innerHTML += row;
+                });
 
-    // Function to render inventory table
-    function renderInventory() {
-        const tableBody = document.querySelector('tbody');
-        tableBody.innerHTML = '';
+                // Attach edit and delete event listeners
+                document.querySelectorAll(".btn-info").forEach((button) => {
+                    button.addEventListener("click", handleEditButton);
+                });
 
-        inventory.forEach((item, index) => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${item.ID}</td>
-                <td>${item.product}</td>
-                <td>${item.quantity}</td>
-                <td>${item.price}</td>
-                <td>
-                    <button class="btn btn-sm btn-info me-3 action-btn edit-btn" data-index="${index}" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
-                    <button class="btn btn-sm btn-danger action-btn delete-btn" data-index="${index}" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-                </td>
-            `;
-            tableBody.appendChild(row);
-        });
-
-        attachEventListeners();
+                document.querySelectorAll(".btn-danger").forEach((button) => {
+                    button.addEventListener("click", handleDeleteButton);
+                });
+            })
+            .catch((error) => console.error("Error fetching inventory:", error));
     }
 
-    // Attach event listeners for edit and delete buttons
-    function attachEventListeners() {
-        document.querySelectorAll('.edit-btn').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const index = e.target.getAttribute('data-index');
-                editProduct(index);
-            });
-        });
+    // Handle Delete button click
+    function handleDeleteButton(event) {
+        const product = event.target.getAttribute("data-id");
 
-        document.querySelectorAll('.delete-btn').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const index = e.target.getAttribute('data-index');
-                setDeleteIndex(index);
-            });
-        });
-    }
-
-    // Function to set the index of the product to delete
-    function setDeleteIndex(index) {
-        deleteIndex = index;
-    }
-    
-    document.querySelector('#deleteModal .btn-danger').addEventListener('click', () => {
-        if (deleteIndex !== null) {
-            inventory.splice(deleteIndex, 1);
-            deleteIndex = null;
-            renderInventory();
-            bootstrap.Modal.getInstance(document.getElementById('deleteModal')).hide();
+        if (confirm('Are you sure you want to delete the product "${product}"?')) {
+            fetch('${apiUrl}/delete/${product}', {
+                method: "DELETE",
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    alert(data.message || "Product deleted successfully!");
+                    fetchInventory(); // Refresh table
+                })
+                .catch((error) => console.error("Error deleting product:", error));
         }
+    }
+
+    // Handle Edit button click
+    function handleEditButton(event) {
+        const button = event.target;
+        const product = button.getAttribute("data-id");
+        const quantity = button.getAttribute("data-quantity");
+        const price = button.getAttribute("data-price");
+    
+        // Populate the edit modal with the current data
+        document.querySelector("#editProductName").value = product;
+        document.querySelector("#editProductQuantity").value = quantity;
+        document.querySelector("#editProductPrice").value = price;
+    
+        // Remove any previously attached click events to avoid duplication
+        const saveButton = document.querySelector("#editModal .btn-primary");
+        saveButton.onclick = () => handleSaveEdit(product); // Attach the correct handler
+    }
+    
+
+    // Handle Save Edit
+    function handleSaveEdit(product) {
+        const updatedQuantity = document.querySelector("#editProductQuantity").value;
+        const updatedPrice = document.querySelector("#editProductPrice").value;
+    
+        fetch('${apiUrl}/edit/${product}', {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                Product: product,
+                Quantity: parseInt(updatedQuantity, 10),
+                Price: parseFloat(updatedPrice),
+            }),
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Failed to update product");
+                }
+                return response.json();
+            })
+            .then(() => {
+                fetchInventory(); // Refresh the inventory table
+                const editModal = bootstrap.Modal.getInstance(document.querySelector("#editModal"));
+                editModal.hide(); // Close the modal
+            })
+            .catch((error) => {
+                console.error("Error updating product:", error);
+                alert("Failed to save changes. Please try again.");
+            });
+    }
+    
+
+    // Add product functionality
+    document.querySelector("#addProductForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const productName = document.querySelector("#productName").value;
+        const quantity = document.querySelector("#quantity").value;
+        const price = document.querySelector("#price").value;
+
+        fetch('${apiUrl}/new', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                Product: productName,
+                Quantity: parseInt(quantity, 10),
+                Price: parseFloat(price),
+            }),
+        })
+            .then((response) => response.json())
+            .then(() => {
+                fetchInventory(); // Refresh table
+                const addModal = bootstrap.Modal.getInstance(document.querySelector("#addModal"));
+                addModal.hide();
+            })
+            .catch((error) => console.error("Error adding product:", error));
     });
-    
 
-    // Function to add a new product
-    document.querySelector('#addModal .btn-success').addEventListener('click', () => {
-    const productName = document.getElementById('addProductName').value.trim();
-    const productQuantity = parseInt(document.getElementById('addProductQuantity').value.trim());
-    const productPrice = parseFloat(document.getElementById('addProductPrice').value.trim()).toFixed(2);
-
-    if (productName && productQuantity && !isNaN(productPrice)) {
-        const newID = inventory.length ? (parseInt(inventory[inventory.length - 1].ID) + 1).toString() : '1';
-        inventory.push({ ID: newID, product: productName, quantity: productQuantity, price: productPrice });
-
-        // Clear fields and close modal
-        document.getElementById('addProductName').value = '';
-        document.getElementById('addProductQuantity').value = '';
-        document.getElementById('addProductPrice').value = '';
-        renderInventory();
-        bootstrap.Modal.getInstance(document.getElementById('addModal')).hide();
-    } else {
-        alert('Please fill in all fields correctly!');
-    }
-});
-
-
-    // Function to edit an existing product
-    function editProduct(index) {
-        const item = inventory[index];
-        document.getElementById('editProductName').value = item.product;
-        document.getElementById('editProductQuantity').value = item.quantity;
-        document.getElementById('editProductPrice').value = item.price;
-    
-        document.querySelector('#editModal .btn-primary').onclick = () => {
-            const updatedName = document.getElementById('editProductName').value.trim();
-            const updatedQuantity = parseInt(document.getElementById('editProductQuantity').value.trim());
-            const updatedPrice = parseFloat(document.getElementById('editProductPrice').value.trim()).toFixed(2);
-    
-            if (updatedName && updatedQuantity && !isNaN(updatedPrice)) {
-                inventory[index] = {
-                    ...item,
-                    product: updatedName,
-                    quantity: updatedQuantity,
-                    price: updatedPrice,
-                };
-    
-                renderInventory();
-                bootstrap.Modal.getInstance(document.getElementById('editModal')).hide();
-            } else {
-                alert('Please provide valid input values.');
-            }
-        };
-    }
-    
-
-    // Initial render of the inventory table
-    renderInventory();
+    // Initial fetch on page load
+    fetchInventory();
 });
