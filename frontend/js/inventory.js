@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             <td>${item.Quantity}</td>
                             <td>${item.Price}</td>
                             <td>
-                                <button class="btn btn-sm btn-success me-3 action-btn" 
+                                <button class="btn btn-sm btn-secondary me-3 action-btn" 
                                     data-id="${item.Product}" 
                                     data-quantity="${item.Quantity}" 
                                     data-bs-toggle="modal" 

@@ -13,7 +13,7 @@ const addData = async (req, res) => {
 
         if (existingProduct) {
             // If the product exists, increment the quantity and update the price
-            existingProduct.Quantity += Quantity;
+            existingProduct.Quantity + Quantity;
             existingProduct.Price = Price;
             await existingProduct.save();
             return res.status(200).json({ message: 'Product updated', product: existingProduct });

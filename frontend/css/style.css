@@ -330,6 +330,26 @@
   color: #000;
 }
 
+/* Change the color of pagination to pink */
+.pagination .page-link {
+  color: #e91e63; /* Pink color for text */
+  background-color: transparent; /* Transparent background */
+  border-color: #e91e63; /* Pink border */
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #FF92CC; /* Pink background for active page */
+  border-color: #FFB9C5; /* Pink border for active page */
+  color: white; /* White text on active page */
+}
+
+
+
+.pagination .page-item.disabled .page-link {
+  color: #ddd; /* Grey text for disabled pages */
+  background-color: transparent;
+  border-color: #ddd; /* Grey border for disabled pages */
+}
 
   
   
