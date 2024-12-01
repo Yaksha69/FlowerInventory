@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
                 // Attach event listeners
-                document.querySelectorAll(".btn-success").forEach((button) => {
+                document.querySelectorAll(".btn-secondary").forEach((button) => {
                     button.addEventListener("click", handleAddQuantityButton);
                 });
 
