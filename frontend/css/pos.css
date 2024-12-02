@@ -1,0 +1,218 @@
+/* Navbar gradient background */
+.navbar-gradient {
+    background: linear-gradient(to right, #ffcccb, #ff1493);
+  }
+  
+  .navbar-brand {
+    font-family: 'Poppins'; 
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+  .logo {
+    width: 40px; 
+    height: auto; 
+    margin-left: 15px; 
+  }
+
+/* Styling for the product card */
+.card {
+  width: 18rem; /* Set the width of the card */
+  margin: 10px; /* Space between cards */
+  border: 1px solid #ddd; /* Border for the card */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 2px 2px rgba(225, 44, 143, 0.648); /* Add shadow for a subtle 3D effect */
+}
+
+/* Styling for the image to control the size */
+.card-img-top {
+  margin-top: 3%;
+  width: 100%; /* Make the image fit the width of the card */
+  height: 30vh; /* Fix height of the image */
+  object-fit: cover; /* Ensure the image scales correctly while maintaining aspect ratio */
+  border-top-left-radius: 8px; /* Match the rounded corners */
+  border-top-right-radius: 8px; /* Match the rounded corners */
+}
+
+/* Styling for the card body */
+.card-body {
+  padding: 1rem; /* Space inside the card */
+}
+
+.card-title {
+  font-size: 1.2rem; /* Title font size */
+  margin-bottom: 0.5rem; /* Space below the title */
+}
+
+.card-text {
+  font-size: 1rem; /* Font size for price and quantity */
+  color: #555; /* Slightly lighter text color for description */
+}
+
+
+
+  
+  /* Fixed Sidebarrr */
+  .sidebar {
+    width: 25vh;
+    height: 100vh; 
+    background-color: #ffff; 
+    position: fixed; 
+    top: 7vh; 
+    left: 0; 
+    padding: 20px;
+    overflow-y: auto; 
+    box-shadow: -2px 5px 10px rgba(219, 53, 197, 0.1);
+  }
+  
+  .sidebar .nav-link {
+    color: #000;
+  }
+  
+  .sidebar .nav-link.active {
+    font-weight: bold; 
+    color: #100f0f; 
+  }
+
+  .sidebar-footer {
+    position: absolute;
+    bottom: 100px;
+    width: 100%;
+}
+
+.sidebar-footer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  padding-bottom: 100%; 
+  font-style: 'Poppins';
+}
+
+.flower {
+  margin: 0;
+}
+
+
+
+.custom-font {
+    font-family: 'Courier New', Courier, monospace; 
+    font-size: 16px;
+    color: #333;
+}
+
+
+/*pos*/
+.head{
+    display: inline;
+   
+  }
+  
+  header{
+    padding: 2px;
+    background-color:khaki;
+  
+  }
+  .side{
+    list-style-type: none;
+    text-decoration: none;
+  }
+  .bar{
+    margin-top: 50px;
+    margin-left: 20px;
+  }
+  .pos{
+    text-decoration: none;
+  }
+  
+  .checkoutSidebar {
+    position: fixed;
+    top: 60px;
+    right: 0;
+    background-color: #f8f9fa;
+    height: calc(100vh - 60px);
+    width: 20%;
+    padding: 20px;
+    box-shadow: -2px 5px 10px rgba(219, 53, 197, 0.1);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+  }
+  
+  
+  .checkoutContent {
+    flex-grow: 1;
+  }
+  
+  .checkoutbtn {
+    align-self: center; 
+    margin-bottom: 20px; 
+    width: 90%; 
+  }
+  .checkoutItem {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .itemDetails {
+    flex-grow: 1;
+  }
+  
+  .itemControls {
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .itemQuantity {
+    width: 50px;
+    text-align: center;
+    margin: 0 5px;
+  }
+  
+  .deleteBtn {
+    align-self: flex-start;
+  }
+  
+  body {
+    background-color: #fafbfd;
+    margin-right: 320px; 
+  }
+  
+  .contain {
+    margin-top: 8%; 
+    margin-left: 22%; 
+    margin-right: auto; 
+    max-width: calc(100% - 320px); 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+  }
+  
+  .imgpos {
+    width: 100%; 
+    height: 25vh; 
+  }
+  .btn {
+    background: linear-gradient(to right, #ffb6c1, #ff1493);
+    color: white;
+    border: none; 
+    padding: 5px 5px; 
+    border-radius: 5px; 
+    text-transform: uppercase; 
+    font-weight: bold; 
+    transition: all 0.3s ease; 
+}
+
+.btn:hover {
+    background: linear-gradient(to right, #ff1493, #ff69b4); 
+    transform: scale(1.05); 
+}
+
+.card-text{
+  font-weight: bold;
+}
