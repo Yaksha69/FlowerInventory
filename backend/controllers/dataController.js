@@ -116,6 +116,25 @@ const addQuantity = async (req, res) => {
     }
 };
 
+const checkProduct = async (req, res) => {
+    const { name } = req.query;
+
+    if (!name) {
+        return res.status(400).json({ error: 'Product name is required.' });
+    }
+
+    try {
+        const existingProduct = await Data.findOne({ Product: name });
+        if (existingProduct) {
+            return res.json({ exists: true });
+        }
+        res.json({ exists: false });
+    } catch (err) {
+        console.error('Error checking product:', err.message);
+        res.status(500).json({ error: 'Server error while checking for duplicate products' });
+    }
+};
+
 
 
 
@@ -125,5 +144,6 @@ module.exports = {
     editData,
     deleteData,
     filterLowStock,
-    addQuantity
+    addQuantity,
+    checkProduct
 }

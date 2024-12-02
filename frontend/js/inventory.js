@@ -232,7 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault(); // Prevent default form submission behavior
     
         // Get form data
-        const productName = document.getElementById('productName').value;
+        const productName = document.getElementById('productName').value.trim();
         const quantity = document.getElementById('quantity').value;
         const price = document.getElementById('price').value;
         const productImage = document.getElementById('productImage').files[0];
@@ -247,6 +247,19 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     
         try {
+            // Check for duplicate product names
+            const duplicateCheckResponse = await fetch(`http://localhost:5500/api/v1/data/check-product?name=${encodeURIComponent(productName)}`);
+            const duplicateCheckData = await duplicateCheckResponse.json();
+    
+            if (duplicateCheckResponse.ok && duplicateCheckData.exists) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Duplicate Product',
+                    text: `The product "${productName}" already exists in the database. Please choose a different name.`,
+                });
+                return; // Stop further execution if duplicate found
+            }
+    
             // Create FormData to send data including the file
             const formData = new FormData();
             formData.append('Product', productName);
@@ -263,6 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const data = await response.json();
     
             if (response.ok && data.message) {
+                // Show success alert and wait for user confirmation
                 Swal.fire({
                     icon: 'success',
                     title: 'Product Added',
@@ -270,12 +284,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     showConfirmButton: true, // Requires user action to close
                     allowOutsideClick: false, // Prevents closing by clicking outside
                 }).then(() => {
-                    // Close the modal and reset the form after SweetAlert
+                    // Close the modal and reset the form after user clicks OK
                     const modal = bootstrap.Modal.getInstance(document.getElementById('addModal'));
-                    modal.hide();
-                    addProductForm.reset();
-                    fetchInventory(); // Refresh inventory after SweetAlert
+                    modal.hide(); // Close the modal
+                    addProductForm.reset(); // Reset the form
+                    window.location.reload(); // Reload the page after SweetAlert
                 });
+    
             } else {
                 Swal.fire({
                     icon: 'error',
@@ -295,8 +310,8 @@ document.addEventListener("DOMContentLoaded", () => {
     
     
     
-
-
+    
+    
     // Handle search input event for filtering
     searchInput.addEventListener('input', (event) => {
         const searchQuery = event.target.value;

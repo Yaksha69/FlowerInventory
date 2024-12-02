@@ -20,9 +20,9 @@ app.use(cookieParser());
 // Middleware Setup
 
 app.use(cors({
-    origin: 'http://127.0.0.1:5500', // Replace with your frontend URL
+    origin: 'http://127.0.0.1:5500', 
     methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
-    credentials: true, // Allow cookies to be sent
+    credentials: true, 
 }));
 
 

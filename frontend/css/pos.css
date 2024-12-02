@@ -21,7 +21,7 @@
   margin: 10px; /* Space between cards */
   border: 1px solid #ddd; /* Border for the card */
   border-radius: 8px; /* Rounded corners */
-  box-shadow: 10px 8px 10px rgba(219, 53, 197, 0.1); /* Add shadow for a subtle 3D effect */
+  box-shadow: 2px 2px rgba(225, 44, 143, 0.648); /* Add shadow for a subtle 3D effect */
 }
 
 /* Styling for the image to control the size */

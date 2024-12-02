@@ -1,16 +1,3 @@
-// Create a SweetAlert mixin for common configuration
-const swalMixin = Swal.mixin({
-    toast: true,
-    position: 'top-end',
-    iconColor: 'white',
-    customClass: {
-        popup: 'colored-toast'
-    },
-    showConfirmButton: false,
-    timer: 5000,
-    timerProgressBar: true,
-});
-
 document.getElementById('loginForm').addEventListener('submit', async function (e) {
     e.preventDefault(); // Prevent form from refreshing the page
 
@@ -27,8 +14,11 @@ document.getElementById('loginForm').addEventListener('submit', async function (
 
         if (!response.ok) {
             const errorData = await response.json();
-            swalMixin.fire({
-                icon: 'error',
+            Swal.fire({
+                imageUrl: "./assets/crying-cat.gif",
+                imageWidth: 400,
+                imageHeight: 200,
+                imageAlt: "Custom image",
                 title: 'Login Failed',
                 text: errorData.error || 'Invalid username or password.',
             });
@@ -37,12 +27,17 @@ document.getElementById('loginForm').addEventListener('submit', async function (
 
         const data = await response.json();
 
-        // Show a loading GIF as part of the success notification
+        // Show a SweetAlert with a custom backdrop
         Swal.fire({
             title: 'Login Successful',
             html: '<div>Redirecting to your dashboard...</div>',
             imageUrl: './assets/flowerload.gif', // Replace with your GIF URL
             imageAlt: 'Loading...',
+            backdrop: `
+                url("./assets/happy-happy-happy.gif")
+                center bottom
+                no-repeat
+            `,
             allowOutsideClick: false,
             showConfirmButton: false,
             timerProgressBar: true,
@@ -57,7 +52,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
 
     } catch (err) {
         console.error('Error:', err);
-        swalMixin.fire({
+        Swal.fire({
             icon: 'error',
             title: 'Error',
             text: 'An error occurred while logging in. Please try again later.',

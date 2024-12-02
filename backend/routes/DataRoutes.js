@@ -4,7 +4,7 @@ const multer = require('multer');
 const path = require('path');
 
 
-const {addData, getAllData, deleteData, filterLowStock, editData, addQuantity } = require('../controllers/dataController')
+const {addData, getAllData, deleteData, filterLowStock, editData, addQuantity, checkProduct } = require('../controllers/dataController')
 
 
 const storage = multer.diskStorage({
@@ -31,6 +31,8 @@ router.delete('/delete/:Product', deleteData);
 router.get('/lowstock', filterLowStock);
 
 router.put('/increment/:Product', addQuantity);
+
+router.get('/check-product', checkProduct);
 
 
 module.exports = router

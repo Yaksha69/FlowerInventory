@@ -124,7 +124,7 @@
   border: 2px solid #d333de; /* Blue border */
   border-radius: 10px; /* Rounded corners */
   padding: 15px;
-  box-shadow: 4px 6px 6px rgba(255, 56, 208, 0.2);
+  box-shadow: 4px 6px 6px rgba(251, 44, 137, 0.425);
   background-color: white; /* Blue shadow */
 }
   
@@ -156,7 +156,7 @@
   /* Card Styles */
   .card {
     width: 18rem;
-    box-shadow: 4px 6px 8px rgba(255, 58, 245, 0.1); 
+    box-shadow: 4px 6px 8px rgba(234, 25, 168, 0.289); 
   }
   
   .card-body {

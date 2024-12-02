@@ -14,7 +14,7 @@ async function fetchData() {
 
         // Update Sales Card
         const salesCard = document.getElementById('total-sales');
-        salesCard.textContent = totalSalesData?.totalSales ?? 'N/A';
+        salesCard.textContent = `₱ ${totalSalesData?.totalSales ?? 'N/A'}`;        
 
         // Update Low Stock Table (only show items with quantity <= 5, limit to 5 items)
         const lowStockTableBody = document.querySelector('#low-stock-table tbody');
